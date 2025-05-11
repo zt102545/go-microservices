@@ -1,0 +1,18 @@
+    // 通用请求
+    type ApiBaseReq {
+        Version string `json:"version,optional"`                          // 版本号
+        OsVersion string `json:"os_version,optional"`                     // 操作系统版本号
+        DeviceId string `json:"device_id,optional"`                       // 设备id
+        DeviceType int64 `json:"device_type,optional"`                    // 设备类型 0-安卓，1-IOS
+        Hardware string `json:"hardware,optional"`                        // 设备名称
+        SessionId string `json:"session_id,optional"`                     // 会话id
+        Locale string `json:"locale,optional"`                            // 多语言
+        Resolution string `json:"resolution,optional"`                    // 屏幕分辨率
+        Platform string `json:"platform,optional"`                        // 平台
+    }
+
+    // 通用数据返回
+    type ApiBaseResp {
+        Code int64 `json:"code,omitempty"`
+        Message string `json:"message,omitempty"`
+    }

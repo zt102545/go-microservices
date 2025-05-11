@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package bot;
+option go_package = "./demo";
+
+import "proto/source/base.proto";
+
+service Demo {
+  // Ping pong
+  rpc Ping(PingReq) returns(PingResp);}
+
+message PingReq {
+  // 公共信息
+  base.Base base = 1;
+  string ping = 2;
+}
+message PingResp {
+  string pong = 1;
+}

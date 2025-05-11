@@ -1,0 +1,76 @@
+syntax = "v1"
+
+import "base.api"
+
+@server(
+    prefix:     /admin/user // 路由前缀
+    group: user // 路由分组
+    timeout:    5s // 超时配置
+    middleware: AuthInterceptor // 路由添加中间件
+    maxBytes:   1048576 // 请求体大小控制，单位为 byte,goctl 版本 >= 1.5.0 才支持
+)
+service admin {
+    @doc(
+        summary: "列表"
+    )
+    @handler List
+    post /list (UserListReq) returns (UserListResp)
+
+    @doc(
+        summary: "删除"
+    )
+    @handler Delete
+    post /delete (UserDeleteReq) returns (UserDeleteResp)
+
+    @doc(
+        summary: "新增"
+    )
+    @handler Insert
+    post /insert (UserInsertReq) returns (UserInsertResp)
+
+    @doc(
+        summary: "修改"
+    )
+    @handler Update
+    post /update (UserUpdateReq) returns (UserUpdateResp)
+}
+
+type User {
+	Id int64 `json:"id,optional"`
+	Username string `json:"username,optional"`
+}
+
+type UserListReq {
+    ApiBaseReq
+    Id int64 `json:"id,optional"`
+    pageNumber int64 `json:"page_number,optional"`//页码
+    pageSize int64 `json:"page_size,optional"`    //每页数量
+}
+type UserListResp {
+    ApiBaseResp
+    Data interface{} `json:"data"`
+}
+
+type UserDeleteReq {
+    ApiBaseReq
+    Id int64 `json:"id"`
+}
+type UserDeleteResp {
+    ApiBaseResp
+}
+
+type UserInsertReq {
+    ApiBaseReq
+    Data User `json:"data"`
+}
+type UserInsertResp {
+    ApiBaseResp
+}
+
+type UserUpdateReq {
+    ApiBaseReq
+    Data User `json:"data"`
+}
+type UserUpdateResp {
+    ApiBaseResp
+}

@@ -1,0 +1,127 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "gateway api源文件",
+    "description": "根据源文件生成网关",
+    "version": "v1"
+  },
+  "host": "127.0.0.1:8888",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/demo/ping": {
+      "get": {
+        "summary": "ping",
+        "operationId": "Ping",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PingResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "version",
+            "description": " 版本号",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ping",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "demo"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ApiBaseReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        }
+      },
+      "title": "ApiBaseReq"
+    },
+    "ApiBaseResp": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "error_code": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "ApiBaseResp"
+    },
+    "PingReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "ping": {
+          "type": "string"
+        }
+      },
+      "title": "PingReq",
+      "required": [
+        "ping"
+      ]
+    },
+    "PingResp": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "error_code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pong": {
+          "type": "string"
+        }
+      },
+      "title": "PingResp",
+      "required": [
+        "pong"
+      ]
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

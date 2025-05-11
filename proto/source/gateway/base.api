@@ -1,0 +1,13 @@
+syntax = "v1"
+
+// 通用请求
+type ApiBaseReq {
+    Version string `json:"version,optional"`                          // 版本号
+}
+
+// 通用数据返回
+type ApiBaseResp {
+    Status string `json:"status,omitempty"`
+    Message string `json:"message,omitempty"`
+    ErrorCode int64 `json:"error_code,omitempty"`
+}

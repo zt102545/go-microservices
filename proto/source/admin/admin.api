@@ -1,0 +1,13 @@
+syntax = "v1"
+
+import "user.api"
+
+// shell匹配占位符
+info (
+	title:   "admin api源文件"
+	desc:    "根据源文件生成后台api接口"
+	author:  "vine"
+	date:    "2024 年 11 月 26 日"
+	version: "v1"
+)
+

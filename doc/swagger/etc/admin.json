@@ -1,0 +1,471 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "admin api源文件",
+    "description": "根据源文件生成后台api接口",
+    "version": "v1"
+  },
+  "host": "127.0.0.1:8888",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin/user/delete": {
+      "post": {
+        "summary": "删除",
+        "operationId": "Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserDeleteResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDeleteReq"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/admin/user/insert": {
+      "post": {
+        "summary": "新增",
+        "operationId": "Insert",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserInsertResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserInsertReq"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/admin/user/list": {
+      "post": {
+        "summary": "列表",
+        "operationId": "List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserListResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserListReq"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ]
+      }
+    },
+    "/admin/user/update": {
+      "post": {
+        "summary": "修改",
+        "operationId": "Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateResp"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ApiBaseReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "os_version": {
+          "type": "string",
+          "description": " 操作系统版本号"
+        },
+        "device_id": {
+          "type": "string",
+          "description": " 设备id"
+        },
+        "device_type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 设备类型 0-安卓，1-IOS"
+        },
+        "hardware": {
+          "type": "string",
+          "description": " 设备名称"
+        },
+        "session_id": {
+          "type": "string",
+          "description": " 会话id"
+        },
+        "locale": {
+          "type": "string",
+          "description": " 多语言"
+        },
+        "resolution": {
+          "type": "string",
+          "description": " 屏幕分辨率"
+        },
+        "platform": {
+          "type": "string",
+          "description": " 平台"
+        }
+      },
+      "title": "ApiBaseReq"
+    },
+    "ApiBaseResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ApiBaseResp"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
+          "type": "string"
+        }
+      },
+      "title": "User"
+    },
+    "UserDeleteReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "os_version": {
+          "type": "string",
+          "description": " 操作系统版本号"
+        },
+        "device_id": {
+          "type": "string",
+          "description": " 设备id"
+        },
+        "device_type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 设备类型 0-安卓，1-IOS"
+        },
+        "hardware": {
+          "type": "string",
+          "description": " 设备名称"
+        },
+        "session_id": {
+          "type": "string",
+          "description": " 会话id"
+        },
+        "locale": {
+          "type": "string",
+          "description": " 多语言"
+        },
+        "resolution": {
+          "type": "string",
+          "description": " 屏幕分辨率"
+        },
+        "platform": {
+          "type": "string",
+          "description": " 平台"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "UserDeleteReq",
+      "required": [
+        "id"
+      ]
+    },
+    "UserDeleteResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "UserDeleteResp"
+    },
+    "UserInsertReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "os_version": {
+          "type": "string",
+          "description": " 操作系统版本号"
+        },
+        "device_id": {
+          "type": "string",
+          "description": " 设备id"
+        },
+        "device_type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 设备类型 0-安卓，1-IOS"
+        },
+        "hardware": {
+          "type": "string",
+          "description": " 设备名称"
+        },
+        "session_id": {
+          "type": "string",
+          "description": " 会话id"
+        },
+        "locale": {
+          "type": "string",
+          "description": " 多语言"
+        },
+        "resolution": {
+          "type": "string",
+          "description": " 屏幕分辨率"
+        },
+        "platform": {
+          "type": "string",
+          "description": " 平台"
+        },
+        "data": {
+          "$ref": "#/definitions/User"
+        }
+      },
+      "title": "UserInsertReq",
+      "required": [
+        "data"
+      ]
+    },
+    "UserInsertResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "UserInsertResp"
+    },
+    "UserListReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "os_version": {
+          "type": "string",
+          "description": " 操作系统版本号"
+        },
+        "device_id": {
+          "type": "string",
+          "description": " 设备id"
+        },
+        "device_type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 设备类型 0-安卓，1-IOS"
+        },
+        "hardware": {
+          "type": "string",
+          "description": " 设备名称"
+        },
+        "session_id": {
+          "type": "string",
+          "description": " 会话id"
+        },
+        "locale": {
+          "type": "string",
+          "description": " 多语言"
+        },
+        "resolution": {
+          "type": "string",
+          "description": " 屏幕分辨率"
+        },
+        "platform": {
+          "type": "string",
+          "description": " 平台"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "page_number": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页码"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "每页数量"
+        }
+      },
+      "title": "UserListReq"
+    },
+    "UserListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "title": "UserListResp",
+      "required": [
+        "data"
+      ]
+    },
+    "UserUpdateReq": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": " 版本号"
+        },
+        "os_version": {
+          "type": "string",
+          "description": " 操作系统版本号"
+        },
+        "device_id": {
+          "type": "string",
+          "description": " 设备id"
+        },
+        "device_type": {
+          "type": "integer",
+          "format": "int64",
+          "description": " 设备类型 0-安卓，1-IOS"
+        },
+        "hardware": {
+          "type": "string",
+          "description": " 设备名称"
+        },
+        "session_id": {
+          "type": "string",
+          "description": " 会话id"
+        },
+        "locale": {
+          "type": "string",
+          "description": " 多语言"
+        },
+        "resolution": {
+          "type": "string",
+          "description": " 屏幕分辨率"
+        },
+        "platform": {
+          "type": "string",
+          "description": " 平台"
+        },
+        "data": {
+          "$ref": "#/definitions/User"
+        }
+      },
+      "title": "UserUpdateReq",
+      "required": [
+        "data"
+      ]
+    },
+    "UserUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "UserUpdateResp"
+    }
+  },
+  "securityDefinitions": {
+    "apiKey": {
+      "type": "apiKey",
+      "description": "Enter JWT Bearer token **_only_**",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

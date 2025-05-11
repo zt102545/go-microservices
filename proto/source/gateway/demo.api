@@ -1,0 +1,27 @@
+syntax = "v1"
+
+import "base.api"
+
+@server(
+    prefix:     /demo // 路由前缀
+    group: demo // 路由分组
+    timeout:    5s // 超时配置
+    middleware: AuthInterceptor // 路由添加中间件
+    maxBytes:   1048576 // 请求体大小控制，单位为 byte,goctl 版本 >= 1.5.0 才支持
+)
+service gateway {
+    @doc(
+        summary: "ping"
+    )
+    @handler Ping
+    get /ping (PingReq) returns (PingResp)
+}
+
+type PingReq {
+    ApiBaseReq
+    Ping string `json:"ping"`
+}
+type PingResp {
+    ApiBaseResp
+    Pong string `json:"pong"`
+}

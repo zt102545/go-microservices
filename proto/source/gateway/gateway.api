@@ -1,0 +1,12 @@
+syntax = "v1"
+
+import "demo.api"
+
+info (
+	title:   "gateway api源文件"
+	desc:    "根据源文件生成网关"
+	author:  "vine"
+	date:    "2024 年 04 月 22 日"
+	version: "v1"
+)
+

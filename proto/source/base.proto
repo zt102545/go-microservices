@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package base;
+option go_package = "go-microservices/proto/generate/base";
+
+import "google/protobuf/struct.proto";
+
+message Base {
+  //版本
+  string version = 1;
+  google.protobuf.Value test_type = 2;
+}
