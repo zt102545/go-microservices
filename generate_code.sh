@@ -380,16 +380,13 @@ EOF
 package svc
 
 import (
-    "github.com/zeromicro/go-zero/rest"
     "go-microservices/com"
     "go-microservices/service/${param}Service/internal/config"
-    "go-microservices/service/${param}Service/internal/middleware"
 )
 
 type ServiceContext struct {
     C               *com.Config
     Config          config.Config
-    AuthInterceptor rest.Middleware
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -398,7 +395,6 @@ func NewServiceContext(c config.Config) *ServiceContext {
     return &ServiceContext{
         C:               c.InitCom(),
         Config:          c,
-        AuthInterceptor: middleware.NewAuthInterceptorMiddleware().Handle,
     }
 }
 EOF

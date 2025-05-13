@@ -1,24 +1,20 @@
 package svc
 
 import (
-	"github.com/zeromicro/go-zero/rest"
 	"go-microservices/com"
 	"go-microservices/service/demoService/internal/config"
-	"go-microservices/service/demoService/internal/middleware"
 )
 
 type ServiceContext struct {
-	C               *com.Config
-	Config          config.Config
-	AuthInterceptor rest.Middleware
+	C      *com.Config
+	Config config.Config
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 
 	c.InitLog()
 	return &ServiceContext{
-		C:               c.InitCom(),
-		Config:          c,
-		AuthInterceptor: middleware.NewAuthInterceptorMiddleware().Handle,
+		C:      c.InitCom(),
+		Config: c,
 	}
 }
