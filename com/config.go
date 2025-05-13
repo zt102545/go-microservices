@@ -1,6 +1,7 @@
 package com
 
 import (
+	"context"
 	"database/sql"
 	"github.com/redis/go-redis/v9"
 	"github.com/zeromicro/go-zero/core/collection"
@@ -17,8 +18,10 @@ type ComConfig struct {
 	Rc    *redis.Client
 	Cache *collection.Cache
 
+	// mysql model
 	model.UserModel
-
+	model.GlobalVariablesModel
+	// redis model
 	redisModel.LockRedis
 }
 
@@ -52,7 +55,8 @@ func InitCom(db *sql.DB, postgres map[string]*sql.DB, rc *redis.Client) *Config 
 		Cache: cache,
 
 		// mysql model
-		UserModel: model.NewUserModel(connMap["mysql"]),
+		UserModel:            model.NewUserModel(connMap["mysql"]),
+		GlobalVariablesModel: model.NewGlobalVariablesModel(connMap["mysql"]),
 		//postgres model
 
 		//redis model
@@ -70,4 +74,5 @@ func InitCom(db *sql.DB, postgres map[string]*sql.DB, rc *redis.Client) *Config 
 type ComFuncInterface interface {
 	// CheckUser 用户校验
 	CheckUser(user *model.User) bool
+	GetGlobalVariable(ctx context.Context, id int64) (*model.GlobalVariables, error)
 }

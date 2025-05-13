@@ -1,0 +1,20 @@
+Name: demo.rpc
+ListenOn: 0.0.0.0:8080
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: demo.rpc
+Db:
+  Addr: root:123456@tcp(127.0.0.1:30010)/vine?charset=utf8mb4&parseTime=True&loc=Local
+Redis:
+  Addr:
+    - 127.0.0.1:30006
+  Password: 123456
+Log:
+  Mode: kafka
+  Level: info
+  KafkaInfo:
+    Address:
+      - 127.0.0.1:9092
+    Topic:
+      demoService
