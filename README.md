@@ -7,6 +7,7 @@
 + 基于api文件生成api服务和swagger文档
 + 基于数据库表结构生成后台crud的api接口
 + 基于数据库表结构生成curd的model
++ 基于docker打包镜像推送
 
 service下的都是示例代码(adminService：后台api接口，gatewayService：网关服务，demoService：rpc服务)，可以删了重新生成
 ## 技术栈
